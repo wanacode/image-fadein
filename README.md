@@ -13,3 +13,7 @@ To detect if the image is loaded can be inconsistent depending on when the image
 This is based on code from next/image.
 
 https://github.com/vercel/next.js/blob/80ec93d1bb20c4ccb9240c8633e19f9664029355/packages/next/client/image.tsx#L251-L252
+
+# Example
+
+https://image-fadein.netlify.app/
