@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="tailwind.css" />
   </head>
   <body>
-    <div class="h-screen grid">
-      <div class="col-start-1 row-start-1 z-10">
-        <nav class="flex gap-5 justify-center p-5 text-white text-lg">
+    <div class="grid h-screen">
+      <div class="z-10 col-start-1 row-start-1">
+        <nav class="flex justify-center gap-5 p-5 text-lg text-white">
           <a href="/">Home</a>
           <a href="/about.html">About</a>
           <a href="/contact.html">Contact</a>
@@ -18,12 +18,9 @@
         </nav>
       </div>
 
-      <div class="col-start-1 row-start-1 h-screen">
+      <div class="h-screen col-start-1 row-start-1">
         <img
-          onload="
-        javascript: this.classList.add('opacity-100');
-        this.classList.remove('opacity-0');
-      "
+          id="hero"
           class="transition-opacity duration-[2s] opacity-0 ease-in object-cover h-full w-full"
           width="1920"
           height="1080"
@@ -32,5 +29,28 @@
         />
       </div>
     </div>
+
+    <script>
+      function handleLoading(img, src, onLoadingComplete) {
+        if (!img) {
+          return;
+        }
+
+        const handleLoad = () => {
+          const p = "decode" in img ? img.decode() : Promise.resolve();
+          p.catch(() => {}).then(() => {
+            img.classList.remove("opacity-0");
+          });
+        };
+
+        if (img.complete) {
+          handleLoad();
+        } else {
+          img.onload = handleLoad;
+        }
+      }
+      const img = document.getElementById("hero");
+      handleLoading(img);
+    </script>
   </body>
 </html>
