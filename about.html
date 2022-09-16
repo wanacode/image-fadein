@@ -43,10 +43,13 @@
 
       function handleLoading(img, onLoadingComplete) {
         const handleLoad = () => {
-          img.classList.remove("opacity-0");
-          if (onLoadingComplete) {
-            onLoadingComplete();
-          }
+          const p = Promise.resolve();
+          p.catch(() => {}).then(() => {
+            img.classList.remove("opacity-0");
+            if (onLoadingComplete) {
+              onLoadingComplete();
+            }
+          });
         };
 
         if (img.complete) {
