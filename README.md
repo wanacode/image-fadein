@@ -6,6 +6,12 @@ To serve locally run:
 npx http-server
 ```
 
+Run Tailwind
+
+```
+npm run dev
+```
+
 # Explanation
 
 To detect if the image is loaded can be inconsistent depending on when the image loads and the javascript runs. To fix this we can check both `img.complete` and `img.load`.
