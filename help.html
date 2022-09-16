@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="grid h-screen">
-      <div class="z-10 col-start-1 row-start-1">
+      <div class="z-20 col-start-1 row-start-1">
         <nav class="flex justify-center gap-5 p-5 text-lg text-white">
           <a href="/">Home</a>
           <a href="/about.html">About</a>
@@ -28,19 +28,25 @@
           src="https://images.unsplash.com/photo-1526188717906-ab4a2f949f26?w=1920"
         />
       </div>
+      <div class="z-10 flex flex-col justify-end col-start-1 row-start-1 overflow-y-hidden">
+        <h1
+          id="heading"
+          class="p-10 text-6xl font-bold text-white transition duration-500 ease-in delay-1000 transform translate-y-10 opacity-0"
+        >
+          Help
+        </h1>
+      </div>
     </div>
 
     <script>
-      function handleLoading(img, src, onLoadingComplete) {
-        if (!img) {
-          return;
-        }
+      const img = document.getElementById("hero");
 
+      function handleLoading(img, onLoadingComplete) {
         const handleLoad = () => {
-          const p = "decode" in img ? img.decode() : Promise.resolve();
-          p.catch(() => {}).then(() => {
-            img.classList.remove("opacity-0");
-          });
+          img.classList.remove("opacity-0");
+          if (onLoadingComplete) {
+            onLoadingComplete();
+          }
         };
 
         if (img.complete) {
@@ -49,8 +55,14 @@
           img.onload = handleLoad;
         }
       }
-      const img = document.getElementById("hero");
-      handleLoading(img);
+
+      function loadHeading() {
+        console.log("yo");
+        const heading = document.getElementById("heading");
+        heading.classList.remove("opacity-0", "translate-y-10");
+      }
+
+      handleLoading(img, loadHeading);
     </script>
   </body>
 </html>
