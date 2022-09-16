@@ -28,10 +28,12 @@
           src="https://images.unsplash.com/photo-1526188717906-ab4a2f949f26?w=1920"
         />
       </div>
-      <div class="z-10 flex flex-col justify-end col-start-1 row-start-1 overflow-y-hidden">
+      <div
+        class="z-10 flex flex-col justify-center col-start-1 row-start-1 overflow-y-hidden"
+      >
         <h1
           id="heading"
-          class="p-10 text-6xl font-bold text-white transition duration-500 ease-in delay-1000 transform translate-y-10 opacity-0"
+          class="p-10 text-6xl font-bold text-center text-white transition ease-in transform translate-y-10 opacity-0"
         >
           Help
         </h1>
@@ -40,10 +42,11 @@
 
     <script>
       const img = document.getElementById("hero");
+      const heading = document.getElementById("heading");
 
       function handleLoading(img, onLoadingComplete) {
         const handleLoad = () => {
-          img.classList.remove("opacity-0");
+          img.classList.add("fadein");
           if (onLoadingComplete) {
             onLoadingComplete();
           }
@@ -57,9 +60,7 @@
       }
 
       function loadHeading() {
-        console.log("yo");
-        const heading = document.getElementById("heading");
-        heading.classList.remove("opacity-0", "translate-y-10");
+        heading.classList.add("fadeinup");
       }
 
       handleLoading(img, loadHeading);
